@@ -4,7 +4,7 @@ from boto.exception import NoAuthHandlerFound
 from . import MetricsBackend
 
 
-# Limit defined by Amazon - don't change it unless they do.
+# This limit is defined by Amazon. Don't change it unless they do.
 AWS_MAX_BATCH_SIZE = 10
 
 
@@ -20,26 +20,35 @@ class CloudWatchMetricsBackend(MetricsBackend):
     # Send as many items as possible in each CloudWatch API call.
     BUFFER_SIZE = AWS_MAX_BATCH_SIZE
 
-    # Set this per environment.
-    ENVIRONMENT = 'production'
+    # Set this per environment to keep metrics separated.
+    ENVIRONMENT = None
 
     def _get_dimensions(self):
         """
-        Create a dimensions dictionary. Use the hostname if "use_hostname"
-        has been called. Differentiate between production, staging, dev,
-        etc, because CloudWatch is a single pool of metric data.
+        Creates a dimensions dictionary. Uses the hostname if "use_hostname"
+        has been called. Uses the ENVIRONMENT variable to allow for
+        differentiating between production, staging, dev, etc, because
+        CloudWatch is a single pool of metric data.
 
         """
 
-        if self.hostname:
-            return {
-                'Environment': self.ENVIRONMENT,
-                'HostName': self.hostname,
-            }
+        if self.ENVIRONMENT:
+            if self.hostname:
+                return {
+                    'Environment': self.ENVIRONMENT,
+                    'HostName': self.hostname,
+                }
+            else:
+                return {
+                    'Environment': self.ENVIRONMENT,
+                }
         else:
-            return {
-                'Environment': self.ENVIRONMENT,
-            }
+            if self.hostname:
+                return {
+                    'HostName': self.hostname,
+                }
+            else:
+                return {}
 
     def publish(self, items):
         """Send the buffered metric data to CloudWatch."""
