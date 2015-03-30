@@ -1,4 +1,4 @@
-from cloudmetrics.backends import MetricsBackend
+from . import MetricsBackend
 
 
 class TestMetricsBackend(MetricsBackend):

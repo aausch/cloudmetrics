@@ -1,8 +1,8 @@
 import socket
 import unittest
 
-from cloudmetrics.api import MetricsAPI
-from cloudmetrics.backends.test_backend import TestMetricsBackend, FallbackTestMetricsBackend
+from .api import MetricsAPI
+from .backends.test_backend import TestMetricsBackend, FallbackTestMetricsBackend
 
 
 class MetricsAPITestCase(unittest.TestCase):

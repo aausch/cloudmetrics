@@ -1,7 +1,7 @@
 from boto.ec2.cloudwatch import CloudWatchConnection
 from boto.exception import NoAuthHandlerFound
 
-from cloudmetrics.backends import MetricsBackend
+from . import MetricsBackend
 
 
 # Limit defined by Amazon - don't change it unless they do.

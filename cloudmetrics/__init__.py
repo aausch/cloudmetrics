@@ -1,1 +1,1 @@
-from cloudmetrics.api import MetricsAPI
+from .api import MetricsAPI

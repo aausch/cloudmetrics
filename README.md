@@ -132,3 +132,9 @@ to standard output.
                 print '%s %s' % (metric_name, value)
 
     metrics_api = MetricsAPI(CloudWatchMetricsBackend)
+
+
+Running unit tests
+------------------
+
+    python -m cloudmetrics.tests
