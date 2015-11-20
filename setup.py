@@ -1,16 +1,14 @@
 #!/usr/bin/env python
 
-from setuptools import setup
+from setuptools import setup, find_packages
 
 setup(
     name='cloudmetrics',
-    version='0.0.1',
+    version='0.0.2',
     description='Send metrics to CloudWatch.',
     author='Raymond Butcher',
     author_email='randomy@gmail.com',
-    url='https://github.com/apn-online/cloudmetrics',
+    url='https://github.com/raymondbutcher/cloudmetrics',
     license='MIT',
-    packages=(
-        'cloudmetrics',
-    ),
+    packages=find_packages(),
 )
