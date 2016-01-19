@@ -1,4 +1,6 @@
-from boto.ec2.cloudwatch import CloudWatchConnection
+import os
+
+from boto.ec2 import cloudwatch
 from boto.exception import NoAuthHandlerFound
 
 from . import MetricsBackend
@@ -10,7 +12,9 @@ AWS_MAX_BATCH_SIZE = 10
 
 # This relies on boto being configured:
 try:
-    CLOUDWATCH_CONNECTION = CloudWatchConnection()
+    CLOUDWATCH_CONNECTION = cloudwatch.connect_to_region(
+        region_name=os.environ.get('AWS_DEFAULT_REGION')
+    ) or cloudwatch.CloudWatchConnection()
 except NoAuthHandlerFound:
     raise
 
