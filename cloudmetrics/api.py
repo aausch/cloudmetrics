@@ -55,7 +55,9 @@ class MetricsContext(object):
             raise ValueError('The metric name must not be empty.')
 
         if len(kwargs) != 1:
-            raise ValueError('One unit/value keyword argument must be supplied.')
+            raise ValueError(
+                'One unit/value keyword argument must be supplied.'
+            )
 
         for unit, value in kwargs.items():
 
@@ -75,7 +77,9 @@ class MetricsContext(object):
             if hostname is True:
                 hostname = socket.gethostname()
             elif not isinstance(hostname, str):
-                raise TypeError('The hostname must be either True or a string.')
+                raise TypeError(
+                    'The hostname must be either True or a string.'
+                )
         self._backend.use_hostname(hostname)
 
 
@@ -96,7 +100,9 @@ class MetricsAPI(object):
         if not namespace:
             raise ValueError('The metrics namespace must not be empty.')
 
-        metrics_backend = self._backend_class(namespace, self._fallback_backend_class)
+        metrics_backend = self._backend_class(
+            namespace, self._fallback_backend_class
+        )
 
         metrics_context = MetricsContext(metrics_backend)
 

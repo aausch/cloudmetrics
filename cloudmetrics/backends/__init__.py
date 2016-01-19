@@ -77,9 +77,9 @@ class MetricsBackend(object):
     def use_hostname(self, hostname):
         self.hostname = hostname
 
-    ############################################################################
+    ###########################################################################
     # Subclasses should implement everything below here.
-    ############################################################################
+    ###########################################################################
 
     def publish(self, items):
         """Publish metric data items."""

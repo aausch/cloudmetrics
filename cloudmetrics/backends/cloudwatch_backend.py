@@ -8,7 +8,7 @@ from . import MetricsBackend
 AWS_MAX_BATCH_SIZE = 10
 
 
-# This relies on /etc/boto.cfg being configured.
+# This relies on boto being configured:
 try:
     CLOUDWATCH_CONNECTION = CloudWatchConnection()
 except NoAuthHandlerFound:

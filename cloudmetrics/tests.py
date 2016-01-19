@@ -2,7 +2,9 @@ import socket
 import unittest
 
 from .api import MetricsAPI
-from .backends.test_backend import TestMetricsBackend, FallbackTestMetricsBackend
+from .backends.test_backend import (
+    TestMetricsBackend, FallbackTestMetricsBackend
+)
 
 
 class MetricsAPITestCase(unittest.TestCase):
@@ -72,7 +74,9 @@ class MetricsAPITestCase(unittest.TestCase):
             'TestFallback1:One 1',
             'TestFallback1:Two 2',
         ]
-        self.assertEqual(FallbackTestMetricsBackend.consume_published(), expected)
+        self.assertEqual(
+            FallbackTestMetricsBackend.consume_published(), expected
+        )
 
 
 if __name__ == '__main__':
