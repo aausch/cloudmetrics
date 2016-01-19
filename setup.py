@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='cloudmetrics',
-    version='0.0.2',
+    version='0.0.3',
     description='Send metrics to CloudWatch.',
     author='Raymond Butcher',
     author_email='randomy@gmail.com',

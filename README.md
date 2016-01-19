@@ -1,4 +1,4 @@
-cloudmetrics 0.0.2
+cloudmetrics 0.0.3
 ==================
 
 A Python library for sending metrics to CloudWatch.
