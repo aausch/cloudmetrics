@@ -1,4 +1,9 @@
-from Queue import Empty, Full, Queue
+try:
+    # Python 2
+    from Queue import Empty, Full, Queue
+except ImportError:
+    # Python 3
+    from queue import Empty, Full, Queue
 
 
 class MetricsBackend(object):
@@ -21,7 +26,7 @@ class MetricsBackend(object):
         # Read the items in from the buffer, exactly as
         # they were provided to the push_metric method.
         items = []
-        for x in xrange(self._buffer.maxsize):
+        for _ in range(self._buffer.maxsize):
             try:
                 items.append(self._buffer.get(block=False))
             except Empty:

@@ -57,18 +57,18 @@ class MetricsContext(object):
         if len(kwargs) != 1:
             raise ValueError('One unit/value keyword argument must be supplied.')
 
-        unit, value = kwargs.items()[0]
+        for unit, value in kwargs.items():
 
-        try:
-            unit = self.units[unit]
-        except KeyError:
-            raise ValueError('Unsupported value type %r' % unit)
+            try:
+                unit = self.units[unit]
+            except KeyError:
+                raise ValueError('Unsupported value type %r' % unit)
 
-        self._backend.push_metric(
-            name=metric_name,
-            value=value,
-            unit=unit,
-        )
+            self._backend.push_metric(
+                name=metric_name,
+                value=value,
+                unit=unit,
+            )
 
     def use_hostname(self, hostname=True):
         if hostname:
