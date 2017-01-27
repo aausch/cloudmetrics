@@ -7,7 +7,7 @@ from . import MetricsBackend
 
 
 # This limit is defined by Amazon. Don't change it unless they do.
-AWS_MAX_BATCH_SIZE = 10
+AWS_MAX_BATCH_SIZE = 20
 
 
 # This relies on boto being configured:
